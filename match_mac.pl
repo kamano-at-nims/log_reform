@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 
 $fip = $ARGV[0];
 $fuser = $ARGV[1];

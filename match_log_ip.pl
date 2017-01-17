@@ -1,7 +1,8 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 
 $userFile = $ARGV[0];
 $logFile = $ARGV[1];
+$col = $ARGV[2];
 
 open(IN,$userFile);
 %ip = ();
@@ -9,9 +10,7 @@ open(IN,$userFile);
 while(<IN>){
 	chomp;
 	@tmp = split(/\t/,$_);
-	if($tmp[2] ne ""){
-		$ip{$tmp[0]} = "$tmp[0]\t$tmp[1]\t$tmp[2]";
-	}
+	$ip{$tmp[0]} = "$tmp[0] $tmp[1] $tmp[2]";
 }
 close(IN);
 
@@ -27,8 +26,13 @@ while(<IN>){
 	$_=~ s/ +/ /g;
 	@tmp = split(/ /,$_);
 	print "$_";
-	print "\t<==\t";
-	print "$ip{$tmp[2]}";
+	#print "$ip{$tmp[2]}";
+	$addr = $tmp[$col-1];
+	$addr =~ s/\"//g;
+	#print "\t<="."$col"."= ";
+	print "\t<="."$addr"."|";
+	#print "$ip{$tmp[$col-1]}";
+	print "$ip{$addr}=";
 	print "\n";
 }
 close(IN);

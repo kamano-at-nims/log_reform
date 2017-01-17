@@ -11,7 +11,7 @@ while(<IN>){
 	$ptime = $ctime-$sec;
 	if($ctime >= $rtime && $rtime > $ptime){
 		#print "$ptime $ctime $_";
-		print "$ptime $_";
+		print "$_";
 	}
 }
 close(IN);
