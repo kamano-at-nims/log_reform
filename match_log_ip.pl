@@ -14,11 +14,6 @@ while(<IN>){
 }
 close(IN);
 
-#print $ip{"144.213.167.32"};
-#print "\n";
-#print $ip{"144.213.73.31"};
-#print "\n";
-
 @tmp = ();
 open(IN,$logFile);
 while(<IN>){
