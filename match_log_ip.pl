@@ -24,7 +24,9 @@ open(IN,$logFile);
 while(<IN>){
 	chomp;
 	$_=~ s/ +/ /g;
-	@tmp = split(/ /,$_);
+	@tarr = split(/\t/,$_);
+	$line = shift(@tarr);
+	@tmp = split(/ /,$line);
 	print "$_";
 	#print "$ip{$tmp[2]}";
 	$addr = $tmp[$col-1];
@@ -32,7 +34,7 @@ while(<IN>){
 	#print "\t<="."$col"."= ";
 	print "\t<="."$addr"."|";
 	#print "$ip{$tmp[$col-1]}";
-	print "$ip{$addr}=";
+	print "$ip{$addr}=>";
 	print "\n";
 }
 close(IN);
