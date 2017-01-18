@@ -3,6 +3,7 @@
 $userFile = $ARGV[0];
 $logFile = $ARGV[1];
 $col = $ARGV[2];
+$flag = $ARGV[3];
 
 open(IN,$userFile);
 %ip = ();
@@ -27,7 +28,11 @@ while(<IN>){
 	$addr = $tmp[$col-1];
 	$addr =~ s/\"//g;
 	#print "\t<="."$col"."= ";
-	print "\t<="."$addr"."|";
+	if($flag eq "-t"){
+		print "\t<="."$addr"."|";
+	}else{
+		print " <="."$addr"."|";
+	}
 	#print "$ip{$tmp[$col-1]}";
 	print "$ip{$addr}=>";
 	print "\n";
