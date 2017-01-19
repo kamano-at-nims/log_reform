@@ -15,13 +15,16 @@ open(IN,$log);
 while(<IN>){
 	chomp;
 	@line = split(/\t/,$_);
-	$src1 = $line[1];
+	($src1,$src2) = split(/> </,$line[1]);
+	#print "::: $src1 $src2 :::\n";
+	#$src1 = $line[1];
 	$src1 =~ s/^<=//;
 	$src1 =~ s/\|.+$//;
-	$src2 = $line[2];
-	$src2 =~ s/^<=//;
+	#$src2 = $line[2];
+	$src2 =~ s/^=//;
 	$src2 =~ s/\|.+$//;
 	@src=($src1,$src2);
+	#print "((($src1 $src2)))\n";
 	$count = 0;
 	foreach(@src){
 		#if($count > 0){last;}
@@ -36,6 +39,8 @@ while(<IN>){
 	print "$_";
 	if($count > 0){
 		print $flag;
+	}else{
+		print " ";
 	}
 	print "\n";
 }
